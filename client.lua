@@ -17,6 +17,15 @@ Config.IgnoreList = {
 "MERRYWEATHER",
 "SECURITY_GUARD",
 "PRIVATE_SECURITY",
+"ARMY",
+"ARMY_FITNESS"
+"ARMY_GUARD"
+GANG_BIKER
+GANG_BIKER_FEMALE
+GANG
+GANG_VAGOS_BMX
+GANG_VAGOS
+
 }
 
 -- All Ped Group hashes outside this list of peds needs to not be counted. So we need to get this list of peds...
@@ -41,11 +50,12 @@ function SetWeaponDrops()
 		-- Are we sure its a ped?
 		if IsEntityAPed(Target) then
 			-- If Entity is not dead then...
-			if not IsEntityDead(Target) then
+			if not IsPedDeadOrDying(Target) then
 				-- Dont Drop Guns!
 				SetPedDropsWeaponsWhenDead(Target, false)
-				-- Now when they die, I want to make sure we tell the server they are not needed. "CLEAN UP ISLE 7"
-				if IsPedDeadOrDying(Target) then
+			else
+				-- Now if they are dead, I want to make sure we tell the server they are not needed. "CLEAN UP ISLE 7"
+				if IsEntityDead(Target) then
 					if IsPedInAnyVehicle(Target, false) then
 						RemovePedElegantly(Target)
 					end
