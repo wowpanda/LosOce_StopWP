@@ -63,12 +63,18 @@ end
 --	Threads																	--
 ------------------------------------------------------------------------------
 
+-- Stop Weapon Drops
+
 Citizen.CreateThread(function()
     while true do
 		Citizen.Wait(0)			-- Every Frame
         SetWeaponDrops()		-- Set all Peds in Config.Radius to not drop guns.
     end
 end)
+
+------------------------------------------------------------------------------
+
+-- Stop AI Agro
 
 Citizen.CreateThread(function()
 	SetTableHash()
