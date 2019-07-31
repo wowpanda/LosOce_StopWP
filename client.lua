@@ -1,5 +1,9 @@
 Config = {}
 Config.IgnoreList = {
+ALL THE PEDS TO BE COUNTED.
+}
+
+Config.RelationList = {
 "PLAYER",
 "GANG_1",
 "GANG_2",
@@ -17,25 +21,16 @@ Config.IgnoreList = {
 "MERRYWEATHER",
 "SECURITY_GUARD",
 "PRIVATE_SECURITY",
-"ARMY",
-"ARMY_FITNESS"
-"ARMY_GUARD"
-GANG_BIKER
-GANG_BIKER_FEMALE
-GANG
-GANG_VAGOS_BMX
-GANG_VAGOS
-
 }
 
 -- All Ped Group hashes outside this list of peds needs to not be counted. So we need to get this list of peds...
 
-local IgnoreList = {} -- This is the target list...
+local RelationList = {} -- This is the target list...
 
 function SetTableHash()
-	for _,v in ipairs(Config.Ignorelist) do
+	for _,v in ipairs(Config.RelationList) do
 		local v = GetHashKey(v)
-		table.insert(IgnoreList, v)
+		table.insert(RelationList, v)
 	end
 end
 
@@ -76,8 +71,8 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(250)
-		if IgnoreList ~= nil then
-			for _,v in ipairs(IgnoreList) do
+		if RelationList ~= nil then
+			for _,v in ipairs(RelationList) do
 				local v = group
 				SetRelationshipBetweenGroups(0, group, GetHashKey('PLAYER'))
 			end
