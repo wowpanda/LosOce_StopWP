@@ -1,32 +1,30 @@
-Config = {}
-Config.IgnoreList = {
-}
+-- 		 		LosOceanic_StopWP = Stop Weapon Drops of Peds				--
+--						Becasue No one likes free guns						--
+--			By DK - 2019			...	Dont forget your Bananas!			--
+------------------------------------------------------------------------------
 
-Config.RelationList = {
-"PLAYER",
-"GANG_1",
-"GANG_2",
-"GANG_9",
-"GANG_10",
-"AMBIENT_GANG_LOST",
-"AMBIENT_GANG_MEXICAN",
-"AMBIENT_GANG_FAMILY",
-"AMBIENT_GANG_BALLAS",
-"AMBIENT_GANG_MARABUNTE",
-"AMBIENT_GANG_CULT",
-"AMBIENT_GANG_SALVA",
-"AMBIENT_GANG_WEICHENG",
-"AMBIENT_GANG_HILLBILLY",
-"MERRYWEATHER",
-"SECURITY_GUARD",
-"PRIVATE_SECURITY",
-}
+--[ Loading ESX Object Dependancies ]--
 
-Config.Radius = 75
+ESX = nil
 
--- All Ped Group hashes outside this list of peds needs to not be counted. So we need to get this list of peds...
+Citizen.CreateThread(function()
+		while ESX == nil do
+			TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+			Citizen.Wait(250)
+		end
+end)
+
+--[ ESX Loaded - Generate Code Below ]--
+
+------------------------------------------------------------------------------
+--	Locals																	--
+------------------------------------------------------------------------------
 
 local RelationList = {} -- This is the target list...
+
+------------------------------------------------------------------------------
+--	Functions																--
+------------------------------------------------------------------------------
 
 function SetTableHash()
 	for _,v in ipairs(Config.RelationList) do
@@ -61,6 +59,10 @@ function SetWeaponDrops()
 	end			
 end	
 
+------------------------------------------------------------------------------
+--	Threads																	--
+------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
     while true do
 		Citizen.Wait(0)			-- Every Frame
@@ -70,7 +72,7 @@ end)
 
 Citizen.CreateThread(function()
 	SetTableHash()
-	while true do
+	while Config.Disable do
 		Citizen.Wait(50)
 		if RelationList ~= nil then
 			for _,v in ipairs(RelationList) do
@@ -81,3 +83,5 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+------------------------------------------------------------------------------
