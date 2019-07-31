@@ -1,6 +1,5 @@
 Config = {}
 Config.IgnoreList = {
-ALL THE PEDS TO BE COUNTED.
 }
 
 Config.RelationList = {
@@ -23,6 +22,8 @@ Config.RelationList = {
 "PRIVATE_SECURITY",
 }
 
+Config.Radius = 75
+
 -- All Ped Group hashes outside this list of peds needs to not be counted. So we need to get this list of peds...
 
 local RelationList = {} -- This is the target list...
@@ -36,14 +37,14 @@ end
 
 function SetWeaponDrops()
 	-- Set Your Player as a Ped Entity to use its Coords in the ESX Function.
-	local iPlayerPed = GetPlayerPed(-1)
-	local iPlayerPedEntity = GetEntityCoords(iPlayerPed)
+	local iPed = GetPlayerPed(-1)
+	local iPedx = GetEntityCoords(iPed)
 	-- Target Peds as the array and 25 being the distance around the player.
-	local Target, 25 = ESX.Game.GetClosestPedReverse(iPlayerPedEntity, IgnoreList)
+	local Target, Config.Radius = ESX.Game.GetClosestPed(iPedx, Config.IgnoreList)
 	-- For each ped inside the Target array pulled from ESX.
 	for i=1, #Target, 1 do
 		-- Are we sure its a ped?
-		if IsEntityAPed(Target) then
+		if IsEntityAPed(Target) and not IsPedAPlayer(Target) then
 			-- If Entity is not dead then...
 			if not IsPedDeadOrDying(Target) then
 				-- Dont Drop Guns!
@@ -61,16 +62,16 @@ function SetWeaponDrops()
 end	
 
 Citizen.CreateThread(function()
-	SetTableHash()
-	Wait(50)
     while true do
-        SetWeaponDrops()
+		Citizen.Wait(0)			-- Every Frame
+        SetWeaponDrops()		-- Set all Peds in Config.Radius to not drop guns.
     end
 end)
 
 Citizen.CreateThread(function()
+	SetTableHash()
 	while true do
-		Citizen.Wait(250)
+		Citizen.Wait(50)
 		if RelationList ~= nil then
 			for _,v in ipairs(RelationList) do
 				local v = group
