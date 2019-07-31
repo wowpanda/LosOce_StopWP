@@ -22,7 +22,7 @@ Config.IgnoreList = {
 ------------------------------------------------------------------------------
 
 -- Passive AI - No gun fights with ballers etc...
-Congif.Disable = true
+Config.Disable = true
 
 -- Group names, Hashes converted prior to running script.
 Config.RelationList = {

@@ -47,7 +47,11 @@ function SetWeaponDrops()
 			if not IsPedDeadOrDying(Target) then
 				-- Dont Drop Guns!
 				SetPedDropsWeaponsWhenDead(Target, false)
-				RemovePedElegantly(Target)
+					if IsEntityAMissionEntity(Target) then 
+						break
+					else
+						RemovePedElegantly(Target)
+					end
 			else
 				-- Now if they are dead, I want to make sure we tell the server they are not needed. "CLEAN UP ISLE 7"
 				if IsEntityDead(Target) then
