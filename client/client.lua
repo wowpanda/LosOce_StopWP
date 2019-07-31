@@ -47,6 +47,7 @@ function SetWeaponDrops()
 			if not IsPedDeadOrDying(Target) then
 				-- Dont Drop Guns!
 				SetPedDropsWeaponsWhenDead(Target, false)
+				RemovePedElegantly(Target)
 			else
 				-- Now if they are dead, I want to make sure we tell the server they are not needed. "CLEAN UP ISLE 7"
 				if IsEntityDead(Target) then
@@ -85,7 +86,6 @@ Citizen.CreateThread(function()
 				local v = group
 				SetRelationshipBetweenGroups(0, group, GetHashKey('PLAYER'))
 			end
-		else break
 		end
 	end
 end)

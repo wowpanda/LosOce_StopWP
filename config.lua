@@ -11,7 +11,7 @@ Config.Locale = 'en'
 ------------------------------------------------------------------------------
 
 -- Target Radius
-Config.Radius = 75
+Config.Radius = 55
 
 -- Ignore Ped Hash
 Config.IgnoreList = {
