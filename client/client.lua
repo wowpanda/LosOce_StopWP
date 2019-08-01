@@ -20,7 +20,7 @@ end)
 --	Script Locals Variables													--
 ------------------------------------------------------------------------------
 
-local RelationList = {} -- This is the target list...
+local RelationList = {} -- This is the Relationship list of hashes...
 
 ------------------------------------------------------------------------------
 --	Functions																--

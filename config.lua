@@ -27,8 +27,8 @@ Config.Disable = true
 -- Group names, Hashes converted prior to running script.
 Config.RelationList = {
 "PLAYER",
-"CIVMALE",
-"CIVFEMALE",
+-- "CIVMALE",
+-- "CIVFEMALE",
 "COP",
 "SECURITY_GUARD",
 "PRIVATE_SECURITY",
