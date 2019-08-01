@@ -11,7 +11,7 @@ Config.Locale = 'en'
 ------------------------------------------------------------------------------
 
 -- Target Radius
-Config.Radius = 55
+Config.Radius = 42
 
 -- Ignore Ped Hash
 Config.IgnoreList = {
@@ -27,6 +27,12 @@ Config.Disable = true
 -- Group names, Hashes converted prior to running script.
 Config.RelationList = {
 "PLAYER",
+"CIVMALE",
+"CIVFEMALE",
+"COP",
+"SECURITY_GUARD",
+"PRIVATE_SECURITY",
+"FIREMAN",
 "GANG_1",
 "GANG_2",
 "GANG_9",
@@ -40,9 +46,21 @@ Config.RelationList = {
 "AMBIENT_GANG_SALVA",
 "AMBIENT_GANG_WEICHENG",
 "AMBIENT_GANG_HILLBILLY",
+"DEALER",
+"HATES_PLAYER",
+"NO_RELATIONSHIP",
+"SPECIAL",
+"MISSION2",
+"MISSION3",
+"MISSION4",
+"MISSION5",
+"MISSION6",
+"MISSION7",
+"MISSION8",
 "MERRYWEATHER",
-"SECURITY_GUARD",
-"PRIVATE_SECURITY",
+"ARMY",
+"AGGRESSIVE_INVESTIGATE",
+"MEDIC",
 }
 
 ------------------------------------------------------------------------------

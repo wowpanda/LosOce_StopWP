@@ -17,7 +17,7 @@ end)
 --[ ESX Loaded - Generate Code Below ]--
 
 ------------------------------------------------------------------------------
---	Locals																	--
+--	Script Locals Variables													--
 ------------------------------------------------------------------------------
 
 local RelationList = {} -- This is the target list...
