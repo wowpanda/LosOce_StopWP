@@ -20,18 +20,9 @@ end)
 --	Script Locals Variables													--
 ------------------------------------------------------------------------------
 
-local RelationList = {} -- This is the Relationship list of hashes...
-
 ------------------------------------------------------------------------------
 --	Functions																--
 ------------------------------------------------------------------------------
-
-function SetTableHash()
-	for _,v in ipairs(Config.RelationList) do
-		local v = GetHashKey(v)
-		table.insert(RelationList, v)
-	end
-end
 
 function SetWeaponDrops()
 	-- Set Your Player as a Ped Entity to use its Coords in the ESX Function.
@@ -76,23 +67,6 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)			-- Every Frame
         SetWeaponDrops()		-- Set all Peds in Config.Radius to not drop guns.
     end
-end)
-
-------------------------------------------------------------------------------
-
--- Stop AI Agro
-
-Citizen.CreateThread(function()
-	SetTableHash()
-	while Config.Disable do
-		Citizen.Wait(50)
-		if RelationList ~= nil then
-			for _,v in ipairs(RelationList) do
-				local v = group
-				SetRelationshipBetweenGroups(0, group, GetHashKey('PLAYER'))
-			end
-		end
-	end
 end)
 
 ------------------------------------------------------------------------------
