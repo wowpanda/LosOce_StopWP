@@ -38,25 +38,25 @@ function SetWeaponDrops()
 	local iPed = GetPlayerPed(-1)
 	local iPedx = GetEntityCoords(iPed)
 	-- Target Peds as the array and 25 being the distance around the player.
-	local Target, Config.Radius = ESX.Game.GetClosestPed(iPedx, Config.IgnoreList)
+	local Target = ESX.Game.GetPedsInArea(iPedx, Config.Radius, Config.IgnoreList)
 	-- For each ped inside the Target array pulled from ESX.
 	for i=1, #Target, 1 do
 		-- Are we sure its a ped?
-		if IsEntityAPed(Target) and not IsPedAPlayer(Target) then
+		if not IsPedAPlayer(Target[i]) then
 			-- If Entity is not dead then...
-			if not IsPedDeadOrDying(Target) then
+			if not IsPedDeadOrDying(Target[i]) then
 				-- Dont Drop Guns!
-				SetPedDropsWeaponsWhenDead(Target, false)
-					if IsEntityAMissionEntity(Target) then 
+				SetPedDropsWeaponsWhenDead(Target[i], false)
+					if IsEntityAMissionEntity(Target[i]) then 
 						break
 					else
-						RemovePedElegantly(Target)
+						RemovePedElegantly(Target[i])
 					end
 			else
 				-- Now if they are dead, I want to make sure we tell the server they are not needed. "CLEAN UP ISLE 7"
-				if IsEntityDead(Target) then
-					if IsPedInAnyVehicle(Target, false) then
-						RemovePedElegantly(Target)
+				if IsEntityDead(Target[i]) then
+					if IsPedInAnyVehicle(Target[i], false) then
+						RemovePedElegantly(Target[i])
 					end
 				end
 			end
