@@ -38,6 +38,7 @@ function SetWeaponDrops()
 	local iPed = GetPlayerPed(-1)
 	local iPedx = GetEntityCoords(iPed)
 	-- Target Peds as the array and 25 being the distance around the player.
+	-- This is not a normal ESX function.
 	local Target = ESX.Game.GetPedsInArea(iPedx, Config.Radius, Config.IgnoreList)
 	-- For each ped inside the Target array pulled from ESX.
 	for i=1, #Target, 1 do
