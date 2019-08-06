@@ -17,8 +17,24 @@ Also cleaning up a little bit by forcing the dead to despawn and setting all liv
 Within es_extended/client/functions.lua,
 At the bottom, just add... 
 ```
+ESX.Game.GetPedsInArea = function(coords, area, ignorelist)
+	local peds       = ESX.Game.GetPeds()
+	local pedsInArea = {}
 
+	for i=1, #peds, 1 do
+		local pedCoords = GetEntityCoords(peds[i])
+		local distance  = GetDistanceBetweenCoords(pedCoords, coords.x, coords.y, coords.z, true)
+
+		if distance <= area then
+			table.insert(pedsInArea, peds[i])
+		end
+	end
+	
+	return pedsInArea
+end
 ```
+
+## As per normal...
 
 Just add it to your server.cfg
 As with all things ESX, make sure your load order is correct
@@ -37,4 +53,4 @@ This project is licensed under the GNU v3.0 License - see the [LICENSE.md](LICEN
 
 ## Acknowledgments
 
-* 
+* The people that farmed guns in rp modes. 
