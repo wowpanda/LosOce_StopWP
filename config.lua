@@ -15,6 +15,7 @@ Config.Radius = 37
 
 -- Ignore Ped Hash
 Config.IgnoreList = {
+--[[
 0xCE5FF074, -- a_c_boar 
 0xAAB71F62, -- a_c_chickenhawk  
 0xA8683715, -- a_c_chimp  
@@ -405,7 +406,8 @@ Config.IgnoreList = {
 0x31C9E669, -- a_m_y_vinewood_04  
 0xF8013D0C, -- a_m_y_vinewood_04_p  
 0xAB0A7155, -- a_m_y_yoga_01  
-0x9F6E6C8B, -- a_m_y_yoga_01_p  
+0x9F6E6C8B, -- a_m_y_yoga_01_p
+]]--
 }
 
 ------------------------------------------------------------------------------
