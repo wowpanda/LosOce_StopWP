@@ -11,10 +11,10 @@ Config.Locale = 'en'
 ------------------------------------------------------------------------------
 
 -- Target Radius
-Config.Radius  37
+Config.Radius = 37
 
 -- Ignore Ped Hash
-Config.IgnoreList  {
+Config.IgnoreList = {
 0xCE5FF074, -- a_c_boar 
 0xAAB71F62, -- a_c_chickenhawk  
 0xA8683715, -- a_c_chimp  
